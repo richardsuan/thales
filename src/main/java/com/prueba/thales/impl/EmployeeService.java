@@ -31,12 +31,11 @@ public class EmployeeService {
         try {
             ResponseEntity<ResponseEmployeeDto> responseEntity = restTemplate.exchange(url, HttpMethod.GET,entity, ResponseEmployeeDto.class);
             EmployeeDto employee = new EmployeeDto(Objects.requireNonNull(responseEntity.getBody()).getData());
-
             if (employeeList.add(employee)){
                 return employeeList;
-            }else {
-                return getHttpResponseEmployees();
             }
+
+
 
         }catch (Exception e){
             logger.info("error {}",e.getMessage());
@@ -44,7 +43,7 @@ public class EmployeeService {
 
         return null;
     }
-    public ArrayList<EmployeeDto> getHttpResponseEmployees(){
+    public String getHttpResponseEmployees(){
         // String url = String.format("%s/employees/", this.url);
         String url = "https://run.mocky.io/v3/152ccd2f-0e83-4d11-b65a-a90be4d651f2";
         RestTemplate restTemplate = new RestTemplate();
@@ -52,11 +51,10 @@ public class EmployeeService {
         headers.set("Connection", "keep-alive");
         HttpEntity entity = new HttpEntity<>(headers);
         logger.info("los datos son: {}", url);
-
         try {
-            ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET,entity, String.class);
-            logger.info("response {}",responseEntity);
-            return null;
+            ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
+            logger.info("response {} \n {}", responseEntity, responseEntity.getBody());
+            return responseEntity.getBody();
         }catch (Exception e){
             logger.info("error {}",e.getMessage());
         }

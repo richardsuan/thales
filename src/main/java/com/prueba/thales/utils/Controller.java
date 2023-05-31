@@ -20,18 +20,19 @@ import java.util.ArrayList;
 @CrossOrigin(origins = "*")
 public class Controller {
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
-    @GetMapping("/employee/{id}")
+    @GetMapping(value = "/employees")
+    public ResponseEntity<String> getEmployees() {
+        logger.info("holaaaaaaaaaaa");
+        EmployeeService rest = new EmployeeService();
+        String objRes = rest.getHttpResponseEmployees();
+        rest.getHttpResponseEmployees();
+        return new ResponseEntity<>(objRes, HttpStatus.OK);
+    }
+    @GetMapping(value = "/employee/{id}")
     public ResponseEntity<ArrayList<EmployeeDto>> getEmployee(@PathVariable int id) {
         EmployeeService rest = new EmployeeService();
         ArrayList<EmployeeDto> objRes = rest.getHttpResponseOneEmployee(id);
         return new ResponseEntity<>(objRes, HttpStatus.OK);
     }
-    @GetMapping("/employees}")
-    public ResponseEntity<ArrayList<EmployeeDto>> getEmployees() {
-        logger.info("holaaaaaaaaaaa");
-        EmployeeService rest = new EmployeeService();
-        ArrayList<EmployeeDto> objRes = rest.getHttpResponseEmployees();
-        rest.getHttpResponseEmployees();
-        return new ResponseEntity<>(objRes, HttpStatus.OK);
-    }
+
 }

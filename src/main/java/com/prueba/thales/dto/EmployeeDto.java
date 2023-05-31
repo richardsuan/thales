@@ -1,9 +1,11 @@
 package com.prueba.thales.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({"employee_name", "id", "employee_salary", "employee_age", "profile_image"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmployeeDto {
     public EmployeeDto(Data data){
         this.id = data.getId();
