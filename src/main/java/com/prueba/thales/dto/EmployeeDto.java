@@ -1,15 +1,30 @@
 package com.prueba.thales.dto;
 
-public class EmployeeDto {
-    public String getEmployeeName() {
-        return employeeName;
-    }
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"employee_name", "id", "employee_salary", "employee_age", "profile_image"})
+public class EmployeeDto {
+    public EmployeeDto(Data data){
+        this.id = data.getId();
+        this.employeeAge = data.getEmployee_age();
+        this.employeeName = data.getEmployee_name();
+        this.employeeSalary = data.getEmployee_salary();
+        this.profileImage = data.getProfile_image();
+    }
+    public EmployeeDto(){
+
+    }
+    @JsonProperty("employee_name")
+    public String getEmployeeName() {
+        return sanitizingString(employeeName);
+    }
+    @JsonProperty("employee_name")
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
     }
 
-    public int getId() {
+    public float getId() {
         return id;
     }
 
@@ -40,11 +55,21 @@ public class EmployeeDto {
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
-
+    @JsonProperty("employee_name")
     private String employeeName;
-    private int id;
-    private int employeeSalary;
-    private int employeeAge;
-    private String profileImage;
 
+    @JsonProperty("id")
+    private float id;
+    @JsonProperty("employee_salary")
+    private int employeeSalary;
+    @JsonProperty("employee_age")
+    private int employeeAge;
+    @JsonProperty("profile_image")
+    private String profileImage;
+    public static String sanitizingString(String string){
+        if (string==null)
+            return null;
+        else
+            return string.replaceAll("[\n|\r|\t]", "_");//NOSONAR
+    }
 }
