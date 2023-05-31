@@ -2,5 +2,6 @@
 /home/richardandersonsuanyara/Escritorio/thales/src/main/java/com/prueba/thales/ServletInitializer.java
 /home/richardandersonsuanyara/Escritorio/thales/src/main/java/com/prueba/thales/dto/EmployeeDto.java
 /home/richardandersonsuanyara/Escritorio/thales/src/main/java/com/prueba/thales/impl/EmployeeService.java
+/home/richardandersonsuanyara/Escritorio/thales/src/main/java/com/prueba/thales/dto/Data.java
 /home/richardandersonsuanyara/Escritorio/thales/src/main/java/com/prueba/thales/dto/ResponseEmployeeDto.java
 /home/richardandersonsuanyara/Escritorio/thales/src/main/java/com/prueba/thales/utils/Controller.java

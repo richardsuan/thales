@@ -1,14 +1,6 @@
 package com.prueba.thales.dto;
 
 public class EmployeeDto {
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
     public int getId() {
         return id;
     }
@@ -17,34 +9,42 @@ public class EmployeeDto {
         this.id = id;
     }
 
-    public int getEmployeeSalary() {
-        return employeeSalary;
+    public String getEmployee_name() {
+        return employee_name;
     }
 
-    public void setEmployeeSalary(int employeeSalary) {
-        this.employeeSalary = employeeSalary;
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
     }
 
-    public int getEmployeeAge() {
-        return employeeAge;
+    public int getEmployee_salary() {
+        return employee_salary;
     }
 
-    public void setEmployeeAge(int employeeAge) {
-        this.employeeAge = employeeAge;
+    public void setEmployee_salary(int employee_salary) {
+        this.employee_salary = employee_salary;
     }
 
-    public String getProfileImage() {
-        return profileImage;
+    public int getEmployee_age() {
+        return employee_age;
     }
 
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
+    public void setEmployee_age(int employee_age) {
+        this.employee_age = employee_age;
     }
 
-    private String employeeName;
+    public String getProfile_image() {
+        return profile_image;
+    }
+
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
+    }
+
     private int id;
-    private int employeeSalary;
-    private int employeeAge;
-    private String profileImage;
+    private String employee_name;
+    private int employee_salary;
+    private int employee_age;
+    private String profile_image;
 
 }

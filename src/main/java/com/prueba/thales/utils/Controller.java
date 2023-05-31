@@ -13,23 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @RestController
 @CrossOrigin(origins = "*")
 public class Controller {
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
-    @GetMapping("/employee/{id}")
-    public ResponseEntity<EmployeeDto> validateIp(@PathVariable int id) {
-        EmployeeDto objRes = new EmployeeDto();
+    @GetMapping(value = "/employees")
+    public ResponseEntity<List<EmployeeDto>> getEmployees() {
         EmployeeService rest = new EmployeeService();
-
-
-        objRes.setEmployeeName("soy el rey");
-        rest.getHttpResponseOneEmployee(id);
+        List<EmployeeDto> objRes = rest.getHttpResponseEmployees();
         rest.getHttpResponseEmployees();
         return new ResponseEntity<>(objRes, HttpStatus.OK);
-
-
-
     }
+    @GetMapping(value = "/employee/{id}")
+    public ResponseEntity<List<EmployeeDto>> getEmployee(@PathVariable int id) {
+        EmployeeService rest = new EmployeeService();
+        List<EmployeeDto> objRes = rest.getHttpResponseOneEmployee(id);
+        return new ResponseEntity<>(objRes, HttpStatus.OK);
+    }
+
 }
