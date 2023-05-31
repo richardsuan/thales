@@ -13,19 +13,23 @@ import java.util.List;
 public class EmployeeService {
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
     private  final String url ="https://dummy.restapiexample.com/api/v1";
+    private  final String urlEmployees = "https://run.mocky.io/v3/152ccd2f-0e83-4d11-b65a-a90be4d651f2";
+    private  final String urlEmployee = "https://run.mocky.io/v3/40e14ba1-ee48-4dc3-8d05-c0e5e2799cc6";
 
     public List<EmployeeDto> getHttpResponseOneEmployee(int id) {
-        // String url = String.format("%s/employee/%s", this.url, id);
-        String url = "https://run.mocky.io/v3/40e14ba1-ee48-4dc3-8d05-c0e5e2799cc6";
+        String url = String.format("%s/employee/%s", this.url, id);
+        // String url = "https://run.mocky.io/v3/40e14ba1-ee48-4dc3-8d05-c0e5e2799cc6";
         RestTemplate restTemplate = new RestTemplate();
-        return getEmployeeDtos(url, restTemplate);
+        if (getEmployeeDtos(url, restTemplate).isEmpty()){
+            return getEmployeeDtos( urlEmployees, restTemplate);
+        }
+        return getHttpResponseEmployees();
     }
 
     public List<EmployeeDto> getHttpResponseEmployees(){
         // String url = String.format("%s/employees/", this.url);
-        String url = "https://run.mocky.io/v3/152ccd2f-0e83-4d11-b65a-a90be4d651f2";
         RestTemplate restTemplate = new RestTemplate();
-        return getEmployeeDtos(url, restTemplate);
+        return getEmployeeDtos(urlEmployees, restTemplate);
     }
     private List<EmployeeDto> getEmployeeDtos(String url, RestTemplate restTemplate) {
         List<EmployeeDto> employeeList = new ArrayList<>();
