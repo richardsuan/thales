@@ -1,32 +1,7 @@
 package com.prueba.thales.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-@JsonPropertyOrder({"employee_name", "id", "employee_salary", "employee_age", "profile_image"})
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmployeeDto {
-    public EmployeeDto(Data data){
-        this.id = data.getId();
-        this.employeeAge = data.getEmployee_age();
-        this.employeeName = data.getEmployee_name();
-        this.employeeSalary = data.getEmployee_salary();
-        this.profileImage = data.getProfile_image();
-    }
-    public EmployeeDto(){
-
-    }
-    @JsonProperty("employee_name")
-    public String getEmployeeName() {
-        return sanitizingString(employeeName);
-    }
-    @JsonProperty("employee_name")
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
-    public float getId() {
+    public int getId() {
         return id;
     }
 
@@ -34,44 +9,42 @@ public class EmployeeDto {
         this.id = id;
     }
 
-    public int getEmployeeSalary() {
-        return employeeSalary;
+    public String getEmployee_name() {
+        return employee_name;
     }
 
-    public void setEmployeeSalary(int employeeSalary) {
-        this.employeeSalary = employeeSalary;
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
     }
 
-    public int getEmployeeAge() {
-        return employeeAge;
+    public int getEmployee_salary() {
+        return employee_salary;
     }
 
-    public void setEmployeeAge(int employeeAge) {
-        this.employeeAge = employeeAge;
+    public void setEmployee_salary(int employee_salary) {
+        this.employee_salary = employee_salary;
     }
 
-    public String getProfileImage() {
-        return profileImage;
+    public int getEmployee_age() {
+        return employee_age;
     }
 
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
+    public void setEmployee_age(int employee_age) {
+        this.employee_age = employee_age;
     }
-    @JsonProperty("employee_name")
-    private String employeeName;
 
-    @JsonProperty("id")
-    private float id;
-    @JsonProperty("employee_salary")
-    private int employeeSalary;
-    @JsonProperty("employee_age")
-    private int employeeAge;
-    @JsonProperty("profile_image")
-    private String profileImage;
-    public static String sanitizingString(String string){
-        if (string==null)
-            return null;
-        else
-            return string.replaceAll("[\n|\r|\t]", "_");//NOSONAR
+    public String getProfile_image() {
+        return profile_image;
     }
+
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
+    }
+
+    private int id;
+    private String employee_name;
+    private int employee_salary;
+    private int employee_age;
+    private String profile_image;
+
 }

@@ -3,4 +3,5 @@ com/prueba/thales/ServletInitializer.class
 com/prueba/thales/ThalesApplication.class
 com/prueba/thales/utils/Controller.class
 com/prueba/thales/dto/EmployeeDto.class
+com/prueba/thales/dto/Data.class
 com/prueba/thales/impl/EmployeeService.class

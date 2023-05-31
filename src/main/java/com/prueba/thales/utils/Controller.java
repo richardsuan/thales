@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -21,17 +22,16 @@ import java.util.ArrayList;
 public class Controller {
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
     @GetMapping(value = "/employees")
-    public ResponseEntity<String> getEmployees() {
-        logger.info("holaaaaaaaaaaa");
+    public ResponseEntity<List<EmployeeDto>> getEmployees() {
         EmployeeService rest = new EmployeeService();
-        String objRes = rest.getHttpResponseEmployees();
+        List<EmployeeDto> objRes = rest.getHttpResponseEmployees();
         rest.getHttpResponseEmployees();
         return new ResponseEntity<>(objRes, HttpStatus.OK);
     }
     @GetMapping(value = "/employee/{id}")
-    public ResponseEntity<ArrayList<EmployeeDto>> getEmployee(@PathVariable int id) {
+    public ResponseEntity<List<EmployeeDto>> getEmployee(@PathVariable int id) {
         EmployeeService rest = new EmployeeService();
-        ArrayList<EmployeeDto> objRes = rest.getHttpResponseOneEmployee(id);
+        List<EmployeeDto> objRes = rest.getHttpResponseOneEmployee(id);
         return new ResponseEntity<>(objRes, HttpStatus.OK);
     }
 
